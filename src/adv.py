@@ -55,9 +55,23 @@ player = Player('Bob', room['outside'])
 
 while True:
     current_room = player.current_room
-    print(f"Current room: {current_room.name}")
-    print(f"Description: {current_room.description}")
+    print(f" ")
+    # print(f"Current room: {current_room.name}")
+    # print(f"Description: {current_room.description}")
+    # print(f" ")
     move = input("What is your move? ")
     if move == "q":
+        print(f" ")
         print(f'Exiting...')
         exit()
+    elif move == "n":
+        player.move(move)
+    elif move == "s":
+        player.move(move)
+    elif move == "e":
+        player.move(move)
+    elif move == "w":
+        player.move(move)
+    else:
+        print(f" ")
+        print(f'Not so fast...')
