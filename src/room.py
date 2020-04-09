@@ -16,10 +16,11 @@ class Room:
             self.items.append(item)
 
     def removeItem(self, item):
+        # print(f'removeItem: {item}')
         for roomItem in self.items:
             if item == roomItem.name:
                 self.items.remove(roomItem)
-        # if item in self.items.name:
+        # if item in self.items:
         #     self.items.remove(item)
         # else:
         #     print(f"Cannot find {item}")

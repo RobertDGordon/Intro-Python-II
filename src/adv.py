@@ -71,7 +71,7 @@ current_room = player.current_room
 os.system('cls' if os.name == 'nt' else 'clear')
 print(f"\nLet the adventure begin...")
 start = input("\nAre you ready? ")
-if start == "y":
+if start == "y" or "yes":
     os.system('cls' if os.name == 'nt' else 'clear')
     print(f"\nCurrent room: {current_room.name}")
     print(f"Description: {current_room.description}")
@@ -103,9 +103,10 @@ while play == True:
             print(f'\nNot so fast...')
     elif len(actions) == 2:
         verb = actions[0]
-        if verb == "get" or "take":
-            player.addItem(actions[1])
-        elif verb == "drop":
+        if verb == "drop":
+            print('dropping')
             player.dropItem(actions[1])
+        elif verb == "get" or "take":
+            player.addItem(actions[1])
     else:
         print("\nHey, take it easy...")
