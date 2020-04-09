@@ -23,6 +23,7 @@ class Room:
 
     def room_items(self):
         if len(self.items) == 0:
+            print(" ")
             print("The room is empty.")
         else:
             print("In the room is:")

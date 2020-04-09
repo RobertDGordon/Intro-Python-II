@@ -1,3 +1,5 @@
+import os
+
 from room import Room
 from player import Player
 from item import Item, Treasure
@@ -64,26 +66,34 @@ player = Player('Bob', room['outside'])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+current_room = player.current_room
 
-while True:
-    current_room = player.current_room
-    print(f" ")
-    # print(f"Current room: {current_room.name}")
-    # print(f"Description: {current_room.description}")
-    # print(f" ")
-    move = input("What is your move? ")
-    if move == "q":
-        print(f" ")
-        print(f'Exiting...')
+os.system('cls' if os.name == 'nt' else 'clear')
+print(f"\nLet the adventure begin...")
+start = input("\nAre you ready? ")
+if start == "y":
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"\nCurrent room: {current_room.name}")
+    print(f"Description: {current_room.description}")
+    global play
+    play = True
+else:
+    exit()
+
+while play == True:
+    action = input("\nWhat is your move? ")
+    if action == "q":
+        print(f'\nExiting...')
         exit()
-    elif move == "n":
-        player.move(move)
-    elif move == "s":
-        player.move(move)
-    elif move == "e":
-        player.move(move)
-    elif move == "w":
-        player.move(move)
+    elif action == "n":
+        player.move(action)
+    elif action == "s":
+        player.move(action)
+    elif action == "e":
+        player.move(action)
+    elif action == "w":
+        player.move(action)
+    elif action == "l":
+        player.look()
     else:
-        print(f" ")
-        print(f'Not so fast...')
+        print(f'\nNot so fast...')

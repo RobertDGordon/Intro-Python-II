@@ -18,6 +18,9 @@ class Player:
             print('Current room from move:', self.current_room.name)
             print('Description: ', self.current_room.description)
 
+    def look(self):
+        self.current_room.room_items()
+
     def inventory(self):
         print(" ")
         print("Inventory:")
