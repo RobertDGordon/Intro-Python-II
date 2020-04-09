@@ -82,18 +82,30 @@ else:
 
 while play == True:
     action = input("\nWhat is your move? ")
-    if action == "q":
-        print(f'\nExiting...')
-        exit()
-    elif action == "n":
-        player.move(action)
-    elif action == "s":
-        player.move(action)
-    elif action == "e":
-        player.move(action)
-    elif action == "w":
-        player.move(action)
-    elif action == "l":
-        player.look()
+    actions = action.split()
+    if len(actions) == 1:
+        if action == "q":
+            print(f'\nExiting...')
+            exit()
+        elif action == "n":
+            player.move(action)
+        elif action == "s":
+            player.move(action)
+        elif action == "e":
+            player.move(action)
+        elif action == "w":
+            player.move(action)
+        elif action == "l":
+            player.look()
+        elif action == 'i':
+            player.inventory()
+        else:
+            print(f'\nNot so fast...')
+    elif len(actions) == 2:
+        verb = actions[0]
+        if verb == "get" or "take":
+            player.addItem(actions[1])
+        elif verb == "drop":
+            player.dropItem(actions[1])
     else:
-        print(f'\nNot so fast...')
+        print("\nHey, take it easy...")

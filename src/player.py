@@ -29,6 +29,9 @@ class Player:
 
     def addItem(self, item):
         print(f"Adding {item}")
+        self.items.append(item)
+        self.current_room.removeItem(item)
+        
 
     def dropItem(self, item):
         print(f"Dropping {item}")
