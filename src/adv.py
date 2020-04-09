@@ -67,6 +67,7 @@ player = Player('Bob', room['outside'])
 #
 # If the user enters "q", quit the game.
 current_room = player.current_room
+lastItem = ''
 
 os.system('cls' if os.name == 'nt' else 'clear')
 print(f"\nLet the adventure begin...")
@@ -95,18 +96,22 @@ while play == True:
             player.move(action)
         elif action == "w":
             player.move(action)
-        elif action == "l":
+        elif action == "l" or "look":
             player.look()
-        elif action == 'i':
+        elif action == 'i' or "inventory":
             player.inventory()
         else:
             print(f'\nNot so fast...')
     elif len(actions) == 2:
         verb = actions[0]
         if verb == "drop":
-            print('dropping')
-            player.dropItem(actions[1])
+            if actions[1] == "it":
+                # print(f'it here, lastItem {lastItem}')
+                player.dropItem(lastItem)
+            else:
+                player.dropItem(actions[1])
         elif verb == "get" or "take":
+            lastItem = actions[1]
             player.addItem(actions[1])
     else:
         print("\nHey, take it easy...")
