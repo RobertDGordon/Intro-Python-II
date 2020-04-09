@@ -5,14 +5,27 @@ class Player:
     def __init__(self, name, current_room):
         self.name = name
         self.current_room = current_room
+        self.items = []
     
     def move(self, direction):
         next_room = getattr(self.current_room, f"{direction}_to")
         if next_room == None:
             print(" ")
-            print("The path is blocked.")
+            print("You can't go that way.")
         else:
             self.current_room = next_room
+            print(" ")
             print('Current room from move:', self.current_room.name)
             print('Description: ', self.current_room.description)
 
+    def inventory(self):
+        print(" ")
+        print("Inventory:")
+        for item in self.items:
+            print(item)
+
+    def addItem(self, item):
+        print(f"Adding {item}")
+
+    def dropItem(self, item):
+        print(f"Dropping {item}")

@@ -1,5 +1,12 @@
 from room import Room
 from player import Player
+from item import Item, Treasure
+
+# Declare all items
+book = Treasure("book", "a dusty old book", 100)
+flashlight = Treasure("flashlight", "it lights up the dark, batteries included?", 200)
+laptop = Treasure("laptop", "a relic from decades ago, but it still powers on...", 500)
+disk = Treasure("disk", "a disk that is floppy", 400)
 
 # Declare all the rooms
 
@@ -33,6 +40,11 @@ room['overlook'].s_to = room['foyer']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
+
+room['outside'].addItem(book)
+room['foyer'].addItem(disk, flashlight)
+room['treasure'].addItem(laptop)
+
 
 #
 # Main

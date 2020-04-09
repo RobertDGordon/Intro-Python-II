@@ -9,3 +9,22 @@ class Room:
         self.s_to = None
         self.e_to = None
         self.w_to = None
+        self.items = []
+
+    def addItem(self, *newItems):
+        for item in newItems:
+            self.items.append(item)
+
+    def removeItem(self, item):
+        if item in self.items:
+            self.items.remove(item)
+        else:
+            print(f"Cannot find {item}")
+
+    def room_items(self):
+        if len(self.items) == 0:
+            print("The room is empty.")
+        else:
+            print("In the room is:")
+            for item in self.items:
+                print(item.name)
