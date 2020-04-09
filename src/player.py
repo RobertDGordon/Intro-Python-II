@@ -25,14 +25,22 @@ class Player:
         print(" ")
         print("Inventory:")
         for item in self.items:
-            print(item)
+            print(item.name)
 
-    def addItem(self, item):
-        print(f"Adding {item}")
-        self.items.append(item)
-        self.current_room.removeItem(item)
+    def addItem(self, action):
+        print(f"Adding {action}")
+        for item in self.current_room.items:
+            if item.name == action:
+                self.items.append(item)
+                self.current_room.removeItem(item)
+            else:
+                print(f'Error, cannot find {action}')
         
-    def dropItem(self, item):
-        print(f"Dropping {item}")
-        self.items.remove(item)
-        self.current_room.addItem(item)
+    def dropItem(self, action):
+        print(f"Dropping {action}")
+        for item in self.items:
+            if item.name == action:
+                self.items.remove(item)
+                self.current_room.addItem(item)
+            else:
+                print(f'Error, cannot drop {action}')
